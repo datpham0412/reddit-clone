@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Icons } from "./Icons";
 import { buttonVariants } from "./ui/Button";
+import UserAccountNav from "./UserAccountNav";
 
 const Navbar = ({ session }: { session: any }) => {
   return (
@@ -14,8 +15,8 @@ const Navbar = ({ session }: { session: any }) => {
         </Link>
 
         {/* search bar */}
-        {session ? (
-          <p>You're logged in</p>
+        {session?.user ? (
+          <UserAccountNav user={session.user} />
         ) : (
           <Link href="/sign-in" className={buttonVariants()}>
             Sign In
