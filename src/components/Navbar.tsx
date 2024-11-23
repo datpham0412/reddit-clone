@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Icons } from "./Icons";
 import { buttonVariants } from "./ui/Button";
-import UserAccountNav from "./UserAccountNav";
+import { UserAccountNav } from "./UserAccountNav";
 
 const Navbar = ({ session }: { session: any }) => {
   return (
