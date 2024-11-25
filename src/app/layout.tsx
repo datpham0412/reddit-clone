@@ -3,7 +3,6 @@ import { cn } from "@/lib/utils";
 import { Inter } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import { Toaster } from "@/components/ui/Toaster";
-import { getAuthSession } from "@/lib/auth";
 
 export const metadata = {
   title: "Breadit",
@@ -14,10 +13,11 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default async function RootLayout({
   children,
+  authModal,
 }: {
   children: React.ReactNode;
+  authModal: React.ReactNode;
 }) {
-  const session = await getAuthSession();
   return (
     <html
       lang="en"
@@ -27,7 +27,11 @@ export default async function RootLayout({
       )}
     >
       <body className="min-h-screen pt-12 bg-slate-50 antialiased">
-        <Navbar session={session} />
+        {/* @ts-expect-error server component */}
+        <Navbar />
+
+        {authModal}
+
         <div className="container max-w-7xl mx-auto h-full pt-12">
           {children}
         </div>
